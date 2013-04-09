@@ -124,6 +124,17 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
       }
     };
 
+    var mousemoveWrap = function(e) {
+      locs.push({
+        x: e.pageX,
+        y: e.pageY
+      });
+
+      if (locs.length > 3) {
+        locs.shift();
+      }
+    };
+
     var mouseleaveWrap = function(e) {
       rNow = null;
       opts.handler.leaveHandler(e);
@@ -138,21 +149,10 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
       possiblyActivate(e);
     };
 
-    var mousemoveDocument = function(e) {
-      locs.push({
-        x: e.pageX,
-        y: e.pageY
-      });
-
-      if (locs.length > 3) {
-        locs.shift();
-      }
-    };
-
-    self.$wrap.on('mouseleave', mouseleaveWrap);
+    self.$wrap.on('mousemove', mousemoveWrap)
+              .on('mouseleave', mouseleaveWrap);
     self.$menu.on('mouseleave', mouseleaveMenu);
     self.$rows.on('mouseenter', mouseenterRow);
-    $(document).on('mousemove', mousemoveDocument);
   };
 
   /**
