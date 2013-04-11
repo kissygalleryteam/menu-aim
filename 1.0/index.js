@@ -145,6 +145,7 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
 
     var mouseenterRow = function(e) {
       tOut && clearTimeout(tOut);
+      e.stopPropagation();
       possiblyActivate(e);
     };
 
