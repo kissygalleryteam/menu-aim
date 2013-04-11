@@ -14,7 +14,6 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
     self.opts  = S.mix(Menu.defs, opts);
     self.$wrap = $(self.opts.wrap);
     self.$menu = $(self.opts.menu);
-    self.$rows = $(self.opts.rows, self.$menu);
 
     self.locs = [];
     self.rNow = null;
@@ -151,8 +150,8 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
 
     self.$wrap.on('mousemove', mousemoveWrap)
               .on('mouseleave', mouseleaveWrap);
-    self.$menu.on('mouseleave', mouseleaveMenu);
-    self.$rows.on('mouseenter', mouseenterRow);
+    self.$menu.on('mouseleave', mouseleaveMenu)
+              .on('mouseenter', opts.rows, mouseenterRow);
   };
 
   /**
