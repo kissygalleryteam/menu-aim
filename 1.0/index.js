@@ -151,7 +151,7 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
     self.$wrap.on('mousemove', mousemoveWrap)
               .on('mouseleave', mouseleaveWrap);
     self.$menu.on('mouseleave', mouseleaveMenu)
-              .on('mouseenter', opts.rows, mouseenterRow);
+              .delegate('mouseenter', opts.rows, mouseenterRow);
   };
 
   /**
