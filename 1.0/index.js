@@ -104,22 +104,22 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
       return 0;
     };
 
-    var activate = function(row) {
-      if (rNow != row) {
-        opts.handler.enterHandler(row);
-        rNow = row;
+    var activate = function(e) {
+      if (rNow != e.currentTarget) {
+        opts.handler.enterHandler(e);
+        rNow = e.currentTarget;
       }
     };
 
-    var possiblyActivate = function(row) {
+    var possiblyActivate = function(e) {
       var delay = activationDelay();
 
       if (delay) {
           tOut = setTimeout(function() {
-            possiblyActivate(row);
+            possiblyActivate(e);
           }, delay);
       } else {
-          activate(row);
+          activate(e);
       }
     };
 
@@ -134,18 +134,19 @@ KISSY.add('gallery/menu-aim/1.0/menu-aim', function(S) {
       }
     };
 
-    var mouseleaveWrap = function() {
+    var mouseleaveWrap = function(e) {
       rNow = null;
-      opts.handler.leaveHandler();
+      opts.handler.leaveHandler(e);
     };
 
     var mouseleaveMenu = function() {
       tOut && clearTimeout(tOut);
     };
 
-    var mouseenterRow = function() {
+    var mouseenterRow = function(e) {
       tOut && clearTimeout(tOut);
-      possiblyActivate(this);
+      e.stopPropagation();
+      possiblyActivate(e);
     };
 
     self.$wrap.on('mousemove', mousemoveWrap)
