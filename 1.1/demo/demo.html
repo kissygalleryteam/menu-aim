@@ -87,22 +87,21 @@
       </div>
     </div>
     <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed-min.js"></script>
-    <script src="../build/index-min.js"></script>
     <script>
 
       // 配置 Gallery 包
-      // KISSY.config({
-      //   debug: true,
-      //   packages:[
-      //     {
-      //       name   : "gallery",
-      //       path   : "../../../",
-      //       charset: "utf-8"
-      //     }
-      //   ]
-      // });
+      KISSY.config({
+        debug: true,
+        packages:[
+          {
+            name   : "gallery",
+            path   : "../../../../",
+            charset: "utf-8"
+          }
+        ]
+      });
 
-      KISSY.use('gallery/menu-aim/1.1/menu-aim', function(S, Menu) {
+      KISSY.use('gallery/menu-aim/1.1/index', function(S, Menu) {
         var $      = S.all,
             wrapEl = $('#J_Wrap'),
             menuEl = $('#J_Menu'),

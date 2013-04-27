@@ -31,6 +31,22 @@ module.exports = function(grunt) {
       }
     },
 
+    kmc: {
+      options: {
+        packages: [{
+          name: '<%= pkg.name %>',
+          path: '../'
+        }],
+        map: [["<%= pkg.name %>/", "gallery/<%= pkg.name %>/"]]
+      },
+      main: {
+        files: [{
+          src : "<%= pkg.version %>/index.js",
+          dest: "<%= pkg.version %>/build/index.js"
+        }]
+      }
+    },
+
     uglify: {
       compress: {
         src : ['<%= pkg.version %>' + DIR_BUILD + 'index.js'],
@@ -45,7 +61,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= pkg.version %>/*.js'],
-        tasks: ['concat', 'uglify']
+        tasks: ['concat', 'kmc', 'uglify']
       }
     }
 
@@ -56,7 +72,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-kmc');
 
-  grunt.registerTask('default', ['compass', 'cssmin', 'concat', 'uglify']);
+  grunt.registerTask('default', ['kmc', 'uglify']);
 
 };
