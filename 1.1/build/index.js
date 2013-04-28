@@ -1,10 +1,16 @@
+/*
+combined files : 
+
+gallery/menu-aim/1.1/index
+
+*/
 /**
  * @fileoverview menu-aim.js
  * @author 莫争 <gaoli.gl@taobao.com>
  * @version 1.1
  */
 
-KISSY.add('gallery/menu-aim/1.1/menu-aim', function(S) {
+KISSY.add('gallery/menu-aim/1.1/index',function(S) {
 
   var $ = S.all;
 

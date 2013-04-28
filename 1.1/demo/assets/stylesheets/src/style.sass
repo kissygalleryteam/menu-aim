@@ -1,3 +1,55 @@
 @import "compass"
 
 +global-reset()
+
+.wrap
+  position: relative
+  margin: 20px
+
+.menu
+  +float-left
+  padding: 5px 0
+  width: 120px
+  border: 1px solid #DDD
+  +border-radius(5px 0  0 5px)
+  background: #FFF
+
+  li
+    text-indent: 20px
+    font-size: 14px
+
+    a
+      display: block
+      height: 25px
+      line-height: 25px
+      color: #3E3E3E
+      text-decoration: none
+
+  .current
+    background: #F50
+
+    a
+      color: #FFF
+
+.cont
+  position: absolute
+  top: 0
+  left: 121px
+  width: 298px
+  height: 360px
+  border: 1px solid #DDD
+  +border-radius(0 5px 5px 0)
+  background: #FFF
+  overflow: hidden
+  _zoom: 1
+
+  li
+    position: absolute
+
+    h3
+      height: 57px
+      width: 360px
+      text-indent: 20px
+      line-height: 57px
+      border-bottom: 1px solid #DDD
+      background: #F7F7F7

@@ -4,7 +4,7 @@
  * @version 1.1
  */
 
-KISSY.add('gallery/menu-aim/1.1/menu-aim', function(S) {
+KISSY.add(function(S) {
 
   var $ = S.all;
 
