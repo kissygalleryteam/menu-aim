@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>menu aim</title>
+    <link rel="stylesheet" href="./assets/build/style-min.css">
+  </head>
+  <body>
+    <div id="J_Wrap" class="wrap">
+      <div id="J_Menu" class="menu">
+        <ul>
+          <li data-index="0"><a href="javascript:;">女装男装</a></li>
+          <li data-index="1"><a href="javascript:;">鞋类箱包</a></li>
+          <li data-index="2"><a href="javascript:;">内衣配饰</a></li>
+          <li data-index="3"><a href="javascript:;">户外运动</a></li>
+          <li data-index="4"><a href="javascript:;">珠宝手表</a></li>
+          <li data-index="5"><a href="javascript:;">数码</a></li>
+          <li data-index="6"><a href="javascript:;">家电办公</a></li>
+          <li data-index="7"><a href="javascript:;">护肤彩妆</a></li>
+          <li data-index="8"><a href="javascript:;">母婴用品</a></li>
+          <li data-index="9"><a href="javascript:;">家居建材</a></li>
+          <li data-index="10"><a href="javascript:;">美食特产</a></li>
+          <li data-index="11"><a href="javascript:;">日用百货</a></li>
+          <li data-index="12"><a href="javascript:;">汽车摩托</a></li>
+          <li data-index="13"><a href="javascript:;">本地生活</a></li>
+        </ul>
+      </div>
+      <div id="J_Cont" class="cont">
+        <ul>
+          <li>
+            <h3>女装男装</h3>
+            <img src="./assets/images/01.png" alt="女装男装">
+          </li>
+          <li>
+            <h3>鞋类箱包</h3>
+            <img src="./assets/images/02.png" alt="鞋类箱包">
+          </li>
+          <li>
+            <h3>内衣配饰</h3>
+            <img src="./assets/images/03.png" alt="内衣配饰">
+          </li>
+          <li>
+            <h3>户外运动</h3>
+            <img src="./assets/images/04.png" alt="户外运动">
+          </li>
+          <li>
+            <h3>珠宝手表</h3>
+            <img src="./assets/images/05.png" alt="珠宝手表">
+          </li>
+          <li>
+            <h3>数码</h3>
+            <img src="./assets/images/06.png" alt="数码">
+          </li>
+          <li>
+            <h3>家电办公</h3>
+            <img src="./assets/images/07.png" alt="家电办公">
+          </li>
+          <li>
+            <h3>护肤彩妆</h3>
+            <img src="./assets/images/08.png" alt="护肤彩妆">
+          </li>
+          <li>
+            <h3>母婴用品</h3>
+            <img src="./assets/images/09.png" alt="母婴用品">
+          </li>
+          <li>
+            <h3>家居建材</h3>
+            <img src="./assets/images/10.png" alt="家居建材">
+          </li>
+          <li>
+            <h3>美食特产</h3>
+            <img src="./assets/images/11.png" alt="美食特产">
+          </li>
+          <li>
+            <h3>日用百货</h3>
+            <img src="./assets/images/12.png" alt="日用百货">
+          </li>
+          <li>
+            <h3>汽车摩托</h3>
+            <img src="./assets/images/13.png" alt="汽车摩托">
+          </li>
+          <li>
+            <h3>本地生活</h3>
+            <img src="./assets/images/14.png" alt="本地生活">
+          </li>          
+        </ul>
+      </div>
+    </div>
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed-min.js"></script>
+    <script>
+
+        var S = KISSY;
+        S.config({
+            packages:[
+                {
+                    name:"kg",
+                    path:"http://g.tbcdn.cn/kg/",
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
+
+        if (S.Config.debug) {
+            var srcPath = "../src/";
+            S.config({
+                packages:[
+                    {
+                        name:"kg/offline/2.0.0",
+                        path:srcPath,
+                        charset:"utf-8",
+                        ignorePackageNameInUri:true
+                    }
+                ]
+            });
+        }
+
+      KISSY.use('kg/menu-aim/2.0.0//index', function(S, Menu) {
+        var $      = S.all,
+            wrapEl = $('#J_Wrap'),
+            menuEl = $('#J_Menu'),
+            contEl = $('#J_Cont');
+            lisEl  = $('li', contEl);
+
+        var enterHandler = function(row) {
+          var rowEl = $(row),
+              index = parseInt(rowEl.attr('data-index'));
+
+          rowEl.addClass('current')
+               .siblings().removeClass('current');
+
+          lisEl.item(index).show()
+               .siblings().hide();
+        };
+
+        var leaveHandler = function() {
+        };
+
+        new Menu({
+          wrap: '#J_Wrap',
+          menu: '#J_Menu',
+          rows: 'li',
+          handler: {
+            enterHandler: enterHandler,
+            leaveHandler: leaveHandler
+          }
+        });
+        
+      });
+
+    </script>
+  </body>
+</html>
